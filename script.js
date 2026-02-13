@@ -30,8 +30,9 @@
     '~': {
       type: 'dir',
       children: ['about.txt', 'skills.sh', 'contact.md', 'experience/', 'education/', 'projects/', 'certifications/'],
-      hidden: ['.ssh/']
+      hidden: ['.ssh/', '.coffee.txt']
     },
+    '~/.coffee.txt': { type: 'file' },
     '~/.ssh': {
       type: 'dir',
       children: ['known_hosts']
@@ -159,7 +160,10 @@ invoicing module in Java.`,
     <span class="c-cyan">roscrea.ie</span>      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILhome...🏠==
     <span class="c-cyan">losangeles.ca</span>      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMp2...k3Jw==
     <span class="c-cyan">dallas.tx</span>       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBx9...r7Fg==
-    <span class="c-cyan">mumbai.in</span>       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINk7...a4Qw==`
+    <span class="c-cyan">mumbai.in</span>       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINk7...a4Qw==`,
+
+    // .coffee.txt — hidden easter egg, visible with ls -a
+    '~/.coffee.txt': null  // placeholder — set after EASTER_EGGS is defined
   };
 
   // ================================================================
@@ -277,9 +281,9 @@ invoicing module in Java.`,
   // ---- cat ----
   COMMANDS['cat'] = (args, rawInput) => {
     // Easter egg: cat coffee.txt
-    if (args[0] === 'coffee.txt') {
-      return EASTER_EGGS['cat coffee.txt']();
-    }
+    // if (args[0] === 'coffee.txt') {
+    //   return EASTER_EGGS['cat coffee.txt']();
+    // }
     if (args.length === 0) return 'cat: missing operand';
 
     // Support multiple files: cat file1 file2
@@ -515,6 +519,9 @@ ${bot}
         <span class="c-orange">~(=^‥^)ノ</span>    <span class="c-muted">meow.</span>
 </span>`;
   };
+
+  // Backfill .coffee.txt content now that EASTER_EGGS is defined
+  FILE_CONTENTS['~/.coffee.txt'] = EASTER_EGGS['cat coffee.txt']();
 
   // ================================================================
   //  BOOT SEQUENCE
@@ -826,7 +833,11 @@ ${bempty}
 
     // For cd, only show directories
     if (cmd === 'cd') {
-      candidates = dirNode.children
+      let cdEntries = [...dirNode.children];
+      if (dirNode.hidden && filePartial.startsWith('.')) {
+        cdEntries = cdEntries.concat(dirNode.hidden);
+      }
+      candidates = cdEntries
         .filter(c => c.endsWith('/'))
         .map(c => c.replace(/\/$/, ''));
     }
