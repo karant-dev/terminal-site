@@ -23,7 +23,7 @@ An interactive, CRT-styled terminal emulator portfolio website for a DevSecOps E
 ## Tab Completion
 Full tab completion support: commands (`hel`→`help`), files (`cat abo`→`cat about.txt`), executables (`./ski`→`./skills.sh`), directories (`cd exp`→`cd experience`), nested paths (`ls experience/ed`→`ls experience/edwards_analyst.txt`), and hidden dotfiles when typing `.` prefix (`cd .s`→`cd .ssh`). Ambiguous matches show all possibilities.
 
-- `ls -a` — includes hidden dotfiles/dirs (`.ssh/`)
+- `ls -a` — includes hidden dotfiles/dirs (`.ssh/`, `.coffee.txt`)
 - `ls <file>` — prints just the filename (real ls behavior)
 - `ls <dir>/<file>` — resolves nested paths from current directory
 - `cat <dir>/<file>` — reads files via nested paths
@@ -39,7 +39,8 @@ Full tab completion support: commands (`hel`→`help`), files (`cat abo`→`cat 
 - `docker ps` — homelab container table
 - `ping home` — pings roscrea.ie
 - `cat ~/.ssh/known_hosts` or `cat .ssh/known_hosts` — spoofed global server keys
-- `cat coffee.txt` / `./coffee` — ASCII calico cat (Coffee)
+- `cat .coffee.txt` / `./coffee` — ASCII calico cat (Coffee) (`.coffee.txt` discoverable via `ls -a`)
+- `neofetch` — same side-profile calico cat mascot with cat-themed specs (Purrbian OS, Cardboard Box Pro, meowsh, 420 naps, 9 Lives, Catnip Cache)
 - `sudo <anything>` — SOC incident warning
 - `whoami` — identity tagline
 - `gui` — opens https://karant.dev in a new tab
@@ -50,6 +51,7 @@ Full tab completion support: commands (`hel`→`help`), files (`cat abo`→`cat 
 ├── about.txt               # Bio
 ├── skills.sh               # Executable skill bars
 ├── contact.md              # Social links in terminal box
+├── .coffee.txt             # Hidden (ls -a) — ASCII cat easter egg
 ├── .ssh/                   # Hidden (ls -a to see)
 │   └── known_hosts         # Spoofed SSH known hosts
 ├── experience/

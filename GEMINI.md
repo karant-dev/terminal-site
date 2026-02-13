@@ -39,7 +39,8 @@ Full tab completion support: commands (`hel`→`help`), files (`cat abo`→`cat 
 - `docker ps` — homelab container table
 - `ping home` — pings roscrea.ie
 - `cat ~/.ssh/known_hosts` or `cat .ssh/known_hosts` — spoofed global server keys
-- `cat .coffee.txt` / `cat coffee.txt` / `./coffee` — ASCII calico cat (Coffee) (`.coffee.txt` discoverable via `ls -a`)
+- `cat .coffee.txt` / `./coffee` — ASCII calico cat (Coffee) (`.coffee.txt` discoverable via `ls -a`)
+- `neofetch` — same side-profile calico cat mascot with cat-themed specs (Purrbian OS, Cardboard Box Pro, meowsh, 420 naps, 9 Lives, Catnip Cache)
 - `sudo <anything>` — SOC incident warning
 - `whoami` — identity tagline
 - `gui` — opens https://karant.dev in a new tab

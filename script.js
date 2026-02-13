@@ -280,10 +280,6 @@ invoicing module in Java.`,
 
   // ---- cat ----
   COMMANDS['cat'] = (args, rawInput) => {
-    // Easter egg: cat coffee.txt
-    // if (args[0] === 'coffee.txt') {
-    //   return EASTER_EGGS['cat coffee.txt']();
-    // }
     if (args.length === 0) return 'cat: missing operand';
 
     // Support multiple files: cat file1 file2
@@ -332,17 +328,16 @@ invoicing module in Java.`,
 
   // ---- neofetch ----
   COMMANDS['neofetch'] = () => {
-    return `<span class="c-cyan bold">        .--.        </span>   <span class="c-cyan bold">guest</span><span class="c-muted">@</span><span class="c-magenta bold">karant.dev</span>
-<span class="c-cyan bold">       |o_o |       </span>   <span class="c-muted">──────────────────</span>
-<span class="c-cyan bold">       |:_/ |       </span>   <span class="c-yellow">OS:</span>     Debian 12 (Bookworm)
-<span class="c-cyan bold">      //   \\ \\      </span>   <span class="c-yellow">Host:</span>   Proxmox VE 8.1
-<span class="c-cyan bold">     (|     | )     </span>   <span class="c-yellow">Kernel:</span> 6.5.13-pve
-<span class="c-cyan bold">    /'\\_   _/\`\\    </span>   <span class="c-yellow">Shell:</span>  zsh 5.9
-<span class="c-cyan bold">    \\___)=(___/    </span>   <span class="c-yellow">Uptime:</span> 420 days
-                       <span class="c-yellow">CPU:</span>    AMD Ryzen 7 5800X
-                       <span class="c-yellow">Memory:</span> 32GB DDR4 ECC`;
+    return `                       <span class="c-cyan bold">guest</span><span class="c-muted">@</span><span class="c-magenta bold">karant.dev</span>
+                       <span class="c-muted">──────────────────</span>
+<span class="c-orange bold">        ╱|、        </span>   <span class="c-yellow">OS:</span>      Purrbian 12 (Bookworm)
+<span class="c-orange bold">       (˚ˎ 。7      </span>   <span class="c-yellow">Host:</span>    Cardboard Box Pro 8.1
+<span class="c-orange bold">        |、˜〵      </span>   <span class="c-yellow">Kernel:</span>  6.5.13-purr
+<span class="c-orange bold">        じしˍ,)ノ    </span>   <span class="c-yellow">Shell:</span>   meowsh 5.9
+                       <span class="c-yellow">Uptime:</span>  420 naps
+                       <span class="c-yellow">CPU:</span>     9 Lives (8 remaining)
+                       <span class="c-yellow">Memory:</span>  32GB Catnip Cache`;
   };
-
   // ---- gui ----
   COMMANDS['gui'] = () => {
     setTimeout(() => {
@@ -453,7 +448,39 @@ documents and images — eliminating tedious manual work.
     return `<span class="c-red">autoredact:</span> missing input file. Run <span class="c-yellow">./autoredact --help</span> for usage.`;
   };
 
-  EXECUTABLES['coffee'] = () => EASTER_EGGS['cat coffee.txt']();
+  // ---- coffee (ASCII art helper) ----
+  function buildCoffeeArt() {
+    const W = 28; // inner width
+    const top = '  +' + '-'.repeat(W) + '+';
+    const bot = '  +' + '-'.repeat(W) + '+';
+    const blank = '  |' + ' '.repeat(W) + '|';
+    const pad = (vis, html) => {
+      const fill = W - vis.length;
+      return '  |' + html + ' '.repeat(fill > 0 ? fill : 0) + '|';
+    };
+    return `<span class="ascii-art">
+        ╱|、
+       (˚ˎ 。7
+        |、˜〵
+        じしˍ,)ノ
+
+${top}
+${blank}
+${pad('  Name:   Coffee', '  <span class="c-white">Name:   Coffee</span>')}
+${pad('  Type:   Calico', '  <span class="c-white">Type:   Calico</span>')}
+${pad('  Role:   Chief Meow Officer', '  <span class="c-white">Role:   Chief Meow Officer</span>')}
+${pad('  Status: Napping ♥', '  <span class="c-white">Status: Napping</span> <span class="c-red">♥</span>')}
+${blank}
+${bot}
+
+        <span class="c-orange">~(=^‥^)ノ</span>    <span class="c-muted">meow.</span>
+</span>`;
+  }
+
+  EXECUTABLES['coffee'] = () => buildCoffeeArt();
+
+  // Populate .coffee.txt content
+  FILE_CONTENTS['~/.coffee.txt'] = buildCoffeeArt();
 
   // ================================================================
   //  EASTER EGGS
@@ -491,37 +518,7 @@ round-trip min/avg/max/stddev = 0.38/0.40/0.42/0.015 ms`;
     <span class="c-cyan">mumbai.in</span>       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINk7...a4Qw==`;
   };
 
-  EASTER_EGGS['cat coffee.txt'] = () => {
-    // Build the box dynamically so span tags don't break alignment
-    const W = 28; // inner width
-    const top = '  +' + '-'.repeat(W) + '+';
-    const bot = '  +' + '-'.repeat(W) + '+';
-    const blank = '  |' + ' '.repeat(W) + '|';
-    const pad = (vis, html) => {
-      const fill = W - vis.length;
-      return '  |' + html + ' '.repeat(fill > 0 ? fill : 0) + '|';
-    };
-    return `<span class="ascii-art">
-        ╱|、
-       (˚ˎ 。7
-        |、˜〵
-        じしˍ,)ノ
 
-${top}
-${blank}
-${pad('  Name:   Coffee', '  <span class="c-white">Name:   Coffee</span>')}
-${pad('  Type:   Calico', '  <span class="c-white">Type:   Calico</span>')}
-${pad('  Role:   Chief Meow Officer', '  <span class="c-white">Role:   Chief Meow Officer</span>')}
-${pad('  Status: Napping ♥', '  <span class="c-white">Status: Napping</span> <span class="c-red">♥</span>')}
-${blank}
-${bot}
-
-        <span class="c-orange">~(=^‥^)ノ</span>    <span class="c-muted">meow.</span>
-</span>`;
-  };
-
-  // Backfill .coffee.txt content now that EASTER_EGGS is defined
-  FILE_CONTENTS['~/.coffee.txt'] = EASTER_EGGS['cat coffee.txt']();
 
   // ================================================================
   //  BOOT SEQUENCE
