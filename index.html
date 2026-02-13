@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Karan Thakkar — DevSecOps Engineer & Senior Security Analyst. Interactive terminal portfolio showcasing cloud security, Kubernetes, and infrastructure expertise.">
+  <meta name="author" content="Karan Thakkar">
+  <meta name="keywords" content="DevSecOps, Security Analyst, Cloud Security, AWS, Kubernetes, Portfolio, Terminal">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Karan Thakkar — Terminal Portfolio">
+  <meta property="og:description"
+    content="DevSecOps Engineer & Senior Security Analyst. Explore my interactive terminal portfolio.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://karant.dev">
+
+  <title>guest@karant.dev:~$</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="crt">
+    <div id="terminal-container">
+      <div id="output"></div>
+
+      <!-- Active input line -->
+      <div id="input-line" class="input-line">
+        <span id="prompt-display">
+          <span class="prompt-text">
+            <span class="prompt-user">guest</span><span class="prompt-at">@</span><span
+              class="prompt-host">karant.dev</span>:<span class="prompt-path">~</span><span class="prompt-dollar">$
+            </span>
+          </span>
+        </span>
+        <span id="typed-text" class="typed-text"></span>
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
+
+      <!-- Hidden real input -->
+      <input id="command-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+        aria-label="Terminal command input">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
