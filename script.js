@@ -134,7 +134,7 @@ invoicing module in Java.`,
 
     '~/certifications/certs.txt': `<span class="c-yellow bold">Certifications</span>
 <span class="c-muted">────────────────────────────────────────────────</span>
-<span class="c-cyan">•</span> AWS — Solutions Architect Associate <span class="c-muted">(2023)</span>
+<span class="c-cyan">•</span> AWS — Certified Security Specialty <span class="c-muted">(2026)</span>
 <span class="c-cyan">•</span> AWS — Well-Architected Proficient <span class="c-muted">(2024)</span>
 <span class="c-cyan">•</span> UTA — Graduate Certificate in Big Data Management
   and Data Sciences <span class="c-muted">(2022)</span>
